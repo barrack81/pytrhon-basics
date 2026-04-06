@@ -1,0 +1,17 @@
+"""x = None
+print(x)
+print(type(x))
+
+result = None
+if result is not None:
+    print("result is None")
+else:
+    print("result is not None")"""
+    
+print(bool(False))
+print(bool(None))
+print(bool(0))
+print(bool(""))
+print(bool(()))
+print(bool([]))
+print(bool({}))
