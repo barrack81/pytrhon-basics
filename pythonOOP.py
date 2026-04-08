@@ -588,7 +588,7 @@ staff = [
 ]
 
 for everyone in staff:
-    print(everyone.work())"""
+    print(everyone.work())
     
 from abc import ABC, abstractmethod
 
@@ -655,4 +655,46 @@ staff = [
 ]
 
 for people in staff:
-    print(people.work())
+    print(people.work())"""
+    
+    
+    
+from abc import ABC, abstractmethod
+
+class Employee(ABC):
+    def __init__ (self, name, salary):
+        self.name = name
+        self.__salary = salary
+#what has just hapened above is that ABC makes Employee an abstract class
+#it becmoes a blueprint, not an actual class that can be instantiated. we cannot create objects from an abstract class
+#__salary is a private attribute cannot be accessed directly outside the class, we can only access it through the get_salary method
+        def get_salary(self):
+            return self.__salary
+        
+        def set_salary(self, salary):
+            if salary > 0:
+                self.__salary = salary
+            else: 
+                raise ValueError("salary must be greater than 0")
+            
+#def Get salary is only used to read salary
+#def set_salary is only used to write salary
+#this is data protection
+@abstractmethod
+def work(self):
+    pass
+#now this is the point the abstract method is put in place
+#abstraction blocks the implementation details of a class and only exposes the necessary information to the user
+#the work method is an abstract method that must be implemented by any subclass of Employee
+#it introduces unfinished methods that must be implemented by the subclasses.
+#it is a way of enforcing a contract between the abstract class and its subclasses.
+#it ensures that all subclasses of Employee will have a work method that can be called on them, even if the implementation of the work method is different for each subclass.
+
+class DataAnalyst(Employee):
+    def __init__ (self, name, salary, tools):
+        super.__init__(name, salary)
+        self.tools = tools
+    #dataanalyst is a subclass of Employee, it inherits the properties and methods of Employee
+    #super() reuses parent constructer
+    #tools is new attribute that is specific to DataAnalyst
+                                                 
